@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DukeQuill — Corrector Ortográfico</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-inner">
+            <div class="logo">
+                <svg class="quill-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path id="quill-path" d="M35 5 C25 5, 8 15, 5 35 C10 25, 18 20, 25 18 C20 22, 15 28, 12 35" 
+                          stroke="#E8A857" stroke-width="2" stroke-linecap="round" fill="none"/>
+                    <path d="M5 35 L8 32" stroke="#E8A857" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+                <h1 class="logo-text">Duke<span class="accent">Quill</span></h1>
+            </div>
+            <p class="tagline">Corrector ortográfico del español</p>
+        </div>
+    </header>
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <!-- EDITOR -->
+        <section class="editor-section">
+            <div class="editor-wrapper">
+                <label class="editor-label">Escribe o pega tu texto aquí</label>
+                <div class="editor-container">
+                    <textarea id="text-input" class="text-input" 
+                              placeholder="El desarrollo de software requiere practica constante..."
+                              spellcheck="false"></textarea>
+                    <div id="highlight-overlay" class="highlight-overlay" aria-hidden="true"></div>
+                </div>
+                <div class="editor-footer">
+                    <span id="word-count" class="word-count">0 palabras</span>
+                    <button id="analyze-btn" class="analyze-btn">
+                        <span class="btn-text">Analizar texto</span>
+                        <span class="btn-icon">→</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- RESULTADOS -->
+        <section id="results-section" class="results-section hidden">
+
+            <!-- ESTADÍSTICAS -->
+            <div class="stats-row">
+                <div class="stat-card" id="stat-spell">
+                    <span class="stat-number" id="count-spell">0</span>
+                    <span class="stat-label">Errores ortográficos</span>
+                    <div class="stat-bar red"></div>
+                </div>
+                <div class="stat-card" id="stat-rule">
+                    <span class="stat-number" id="count-rule">0</span>
+                    <span class="stat-label">Errores de puntuación</span>
+                    <div class="stat-bar blue"></div>
+                </div>
+                <div class="stat-card" id="stat-accent">
+                    <span class="stat-number" id="count-accent">0</span>
+                    <span class="stat-label">Errores de acento</span>
+                    <div class="stat-bar gold"></div>
+                </div>
+            </div>
+
+            <!-- LISTAS DE ERRORES -->
+            <div class="errors-grid">
+
+                <div class="error-panel" id="panel-spell">
+                    <h3 class="panel-title"><span class="dot red"></span> Ortografía</h3>
+                    <ul id="list-spell" class="error-list"></ul>
+                </div>
+
+                <div class="error-panel" id="panel-rule">
+                    <h3 class="panel-title"><span class="dot blue"></span> Puntuación</h3>
+                    <ul id="list-rule" class="error-list"></ul>
+                </div>
+
+                <div class="error-panel" id="panel-accent">
+                    <h3 class="panel-title"><span class="dot gold"></span> Acentos</h3>
+                    <ul id="list-accent" class="error-list"></ul>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ESTADO VACÍO -->
+        <div id="empty-state" class="empty-state">
+            <p class="empty-text">Tu texto analizado aparecerá aquí.</p>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>DukeQuill &copy; 2026 · Desarrollado con Java 21 & Spring Boot · 
+           <a href="https://github.com/changoloco066/DukeQuill" target="_blank">GitHub</a>
+        </p>
+    </footer>
+
+    <!-- TOOLTIP -->
+    <div id="tooltip" class="tooltip hidden"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
